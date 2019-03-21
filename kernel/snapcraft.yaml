@@ -1,0 +1,57 @@
+name: imx6ul-dart-kernel
+version: 4.9.88-2
+summary: The kernel for the Variscite iMX6UL-DART 
+description: This is the official kernel for the iMX6UL-DART board from variscite.
+type: kernel
+architectures: [ armhf ]
+grade: stable
+confinement: strict
+
+parts:
+    kernel:
+        plugin: kernel
+        source: https://github.com/varigit/linux-imx.git
+        source-branch: imx_4.9.88_2.0.0_ga-var01
+        source-type: git
+        source-depth: 1
+        kdefconfig: [imx_v7_var_defconfig]
+        kconfigs:
+            - CONFIG_LOCALVERSION="-nymea"
+            - CONFIG_DEBUG_INFO=n
+            - CONFIG_SQUASHFS=m
+            - CONFIG_RFKILL_LEDS=y
+            - CONFIG_LEDS_TRIGGERS=y
+            - CONFIG_SECURITY=y
+            - CONFIG_SECURITY_APPARMOR=y 
+            - CONFIG_SYN_COOKIES=y
+            - CONFIG_STRICT_DEVMEM=y
+            - CONFIG_DEBUG_SET_MODULE_RONX=y 
+            - CONFIG_DEVPTS_MULTIPLE_INSTANCES=n
+            - CONFIG_DEFAULT_SECURITY_APPARMOR=y 
+            - CONFIG_SECCOMP=y 
+            - CONFIG_SECCOMP_FILTER=y
+            - CONFIG_CC_STACKPROTECTOR=y
+            - CONFIG_CC_STACKPROTECTOR_STRONG=y
+            - CONFIG_ENCRYPTED_KEYS=y
+            - CONFIG_SQUASHFS_XATTR=y 
+            - CONFIG_SQUASHFS_XZ=y
+            - CONFIG_BLK_DEV_BSG=y
+            - CONFIG_TMPFS_POSIX_ACL=y 
+            - CONFIG_TMPFS_XATTR=y 
+        kernel-initrd-modules: [ squashfs ]
+        kernel-image-target: zImage
+        build-packages: [bc, kmod, cpio]
+        kernel-device-trees:
+            - imx6ul-var-dart-emmc_wifi
+            - imx6ul-var-dart-nand_wifi 
+            - imx6ul-var-dart-sd_emmc 
+            - imx6ul-var-dart-sd_nand 
+            - imx6ull-var-dart-sd_emmc 
+            - imx6ull-var-dart-nand_wifi
+            - imx6ull-var-dart-sd_nand 
+            - imx6ul-var-dart-5g-emmc_wifi 
+            - imx6ull-var-dart-5g-emmc_wifi 
+            - imx6ul-var-dart-5g-nand_wifi 
+            - imx6ull-var-dart-5g-nand_wifi
+            - imx6ull-var-dart-emmc_wifi
+

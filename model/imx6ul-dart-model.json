@@ -1,0 +1,12 @@
+{
+  "type": "model",
+  "authority-id": "I92sojB50rPC4i7kd0DvqJCSpPpX0GDq",
+  "brand-id": "I92sojB50rPC4i7kd0DvqJCSpPpX0GDq",
+  "series": "16",
+  "model": "imx6ul-dart",
+  "architecture": "armhf",
+  "gadget": "imx6ul-dart-gadget",
+  "kernel": "imx6ul-dart-kernel",
+  "store": "Ifoofeip6eicei2iesoh",
+  "timestamp": "2019-03-20T09:22:01+00:00"
+}

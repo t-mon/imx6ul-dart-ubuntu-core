@@ -1,0 +1,7 @@
+name: imx6ul-dart-gadget
+version: 16.04-1
+summary: Variscite iMX6UL-DART support package
+description: |
+ Support files for booting Variscite iMX6UL-DART
+type: gadget
+architectures: [ armhf ]
