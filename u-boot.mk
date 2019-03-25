@@ -19,6 +19,8 @@ $(UBOOT_BIN): $(UBOOT_SRC)
 
 $(UBOOT_SRC):
 	git clone --depth 1 $(UBOOT_REPO) -b $(UBOOT_BRANCH) u-boot
+	@echo "Apply u-boot patch"
+	cd u-boot; git apply ../u-boot.patch
 
 u-boot: $(UBOOT_BIN)
 

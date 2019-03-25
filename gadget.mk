@@ -17,9 +17,9 @@ u-boot:
 	cp -f $(UBOOT_SPL) $(GADGET_SPL)
 
 preload: u-boot
-	mkenvimage -r -s 8192 -o $(GADGET_DIR)/uboot.env $(GADGET_DIR)/uboot.env.in
+	# Note: snap requires 128kB env image
+	mkenvimage -r -s 131072 -o $(GADGET_DIR)/uboot.env $(GADGET_DIR)/uboot.env.in
 	@if [ ! -f $(GADGET_DIR)/uboot.conf ]; then ln -s uboot.env $(GADGET_DIR)/uboot.conf; fi
-	cp -f $(GADGET_DIR)/uboot.conf $(GADGET_DIR)/boot-assets/uEnv.txt
 
 snappy: preload
 	snapcraft pack $(GADGET_DIR)
