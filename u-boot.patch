@@ -1,17 +1,8 @@
 diff --git a/include/configs/mx6ul_var_dart.h b/include/configs/mx6ul_var_dart.h
-index 61acf16..6e0dcec 100644
+index 61acf16..815186c 100644
 --- a/include/configs/mx6ul_var_dart.h
 +++ b/include/configs/mx6ul_var_dart.h
-@@ -121,7 +121,7 @@
- #define BOOT_ENV_SETTINGS	MMC_BOOT_ENV_SETTINGS
- #define CONFIG_BOOTCOMMAND \
- 	"run ramsize_check; " \
--	"mmc dev ${mmcdev};" \
-+	"mmc dev ${mmcdev}; " \
- 	"mmc dev ${mmcdev}; if mmc rescan; then " \
- 		"if run loadbootenv; then " \
- 			"run importbootenv; " \
-@@ -129,10 +129,10 @@
+@@ -129,10 +129,8 @@
  		"if run loadbootscript; then " \
  			"run bootscript; " \
  		"else " \
@@ -19,14 +10,12 @@ index 61acf16..6e0dcec 100644
 -				"run mmcboot; " \
 -			"else run netboot; " \
 -			"fi; " \
-+			"echo ======= env; " \
-+			"printenv; " \
-+			"echo ======= start ubuntu core;"
++			"echo ======= start ubuntu core;" \
 +			"run snappy_boot; " \
  		"fi; " \
  	"else run netboot; fi"
  
-@@ -144,7 +144,7 @@
+@@ -144,7 +142,7 @@
  #define CONFIG_EXTRA_ENV_SETTINGS \
  	BOOT_ENV_SETTINGS \
  	OPT_ENV_SETTINGS \
@@ -35,7 +24,7 @@ index 61acf16..6e0dcec 100644
  	"script=boot.scr\0" \
  	"image=zImage\0" \
  	"console=ttymxc0\0" \
-@@ -297,6 +297,9 @@
+@@ -297,6 +295,9 @@
  #define CONFIG_ENV_IS_IN_MMC
  #endif
  
@@ -45,7 +34,7 @@ index 61acf16..6e0dcec 100644
  /* NAND pin conflicts with usdhc2 */
  #ifdef CONFIG_CMD_NAND
  #define CONFIG_SYS_FSL_USDHC_NUM	1
-@@ -310,7 +313,7 @@
+@@ -310,7 +311,7 @@
  
  #if defined(CONFIG_ENV_IS_IN_MMC)
  #define CONFIG_ENV_OFFSET		(14 * SZ_64K)

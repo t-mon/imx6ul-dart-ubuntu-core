@@ -39,6 +39,14 @@ parts:
             - CONFIG_TMPFS_POSIX_ACL=y 
             - CONFIG_TMPFS_XATTR=y
             - CONFIG_MMC_BLOCK=y
+            - CONFIG_CGROUP_FREEZER=y
+            - CONFIG_CGROUP_DEVICE=y
+            - CONFIG_CGROUP_SCHED=y
+            - CONFIG_CGROUP_PIDS=y
+            - CONFIG_CGROUP_CPUACCT=y
+            - CONFIG_CGROUP_PERF=y
+            - CONFIG_CGROUP_NET_PRIO=y
+            - CONFIG_CGROUP_NET_CLASSID=y
         kernel-initrd-modules: [ squashfs ]
         kernel-image-target: zImage
         build-packages: [bc, kmod, cpio]
@@ -56,3 +64,16 @@ parts:
             - imx6ull-var-dart-5g-nand_wifi
             - imx6ull-var-dart-emmc_wifi
 
+    # Wifi and bluetooth firmware
+    firmware:
+        plugin: dump
+        source-type: git
+        source: https://github.com/varigit/bcm_4343w_fw.git
+        source-branch: 3.5.5.18
+        override-build: |
+            ls -l
+            mkdir -p $SNAPCRAFT_PART_INSTALL/lib/firmware/bcm
+            cp -rf brcm/ $SNAPCRAFT_PART_INSTALL/lib/firmware/
+            cp -f *.hcd $SNAPCRAFT_PART_INSTALL/lib/firmware/bcm/
+            cp -f LICENSE $SNAPCRAFT_PART_INSTALL/lib/firmware/brcm/
+            cp -f LICENSE $SNAPCRAFT_PART_INSTALL/lib/firmware/bcm/
