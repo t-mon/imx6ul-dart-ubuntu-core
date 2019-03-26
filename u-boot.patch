@@ -1,5 +1,5 @@
 diff --git a/include/configs/mx6ul_var_dart.h b/include/configs/mx6ul_var_dart.h
-index 61acf16..815186c 100644
+index 61acf16..7ba474d 100644
 --- a/include/configs/mx6ul_var_dart.h
 +++ b/include/configs/mx6ul_var_dart.h
 @@ -129,10 +129,8 @@
@@ -10,7 +10,7 @@ index 61acf16..815186c 100644
 -				"run mmcboot; " \
 -			"else run netboot; " \
 -			"fi; " \
-+			"echo ======= start ubuntu core;" \
++			"echo ==> Boot Ubuntu Core from mmc;" \
 +			"run snappy_boot; " \
  		"fi; " \
  	"else run netboot; fi"
